@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Adyasha — ML & Electronics Portfolio</title>
+  <meta name="description" content="Portfolio of Adyasha, B.Tech Electronics and Computer Science student at KIIT University, building machine learning for chips, cells and stars.">
+  <meta name="theme-color" content="#0b0b0c">
+  <meta property="og:title" content="Adyasha — ML & Electronics Portfolio">
+  <meta property="og:description" content="Machine learning for chips, cells and stars.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<!-- Preloader -->
+<div id="loader" aria-hidden="true">
+  <canvas id="orbit" width="440" height="440"></canvas>
+  <p>LOADING</p>
+</div>
+
+<div id="toasts" aria-live="polite"></div>
+
+<!-- Navigation -->
+<header id="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="#home">ADYASHA<i></i></a>
+    <nav class="pill" aria-label="Primary">
+      <a href="#home" data-nav="home" class="active">Home</a>
+      <a href="#about" data-nav="about">About</a>
+      <a href="#experience" data-nav="experience">Journey</a>
+      <a href="#projects" data-nav="projects">Projects</a>
+      <a href="#focus" data-nav="focus">Focus</a>
+      <a href="#skills" data-nav="skills">Toolbox</a>
+    </nav>
+    <div class="nav-right">
+      <a class="social" data-href="github" target="_blank" rel="noopener" title="GitHub" aria-label="GitHub">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+      </a>
+      <a class="social" data-href="linkedin" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+      </a>
+      <a class="cta" id="resume-btn-nav" data-resume href="#">Résumé ↓</a>
+      <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" x2="20" y1="7" y2="7"/><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="17" y2="17"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile drawer -->
+<div id="drawer" aria-hidden="true">
+  <div class="drawer-card">
+    <div class="drawer-top"><span class="brand">ADYASHA<i></i></span><button id="drawer-close" aria-label="Close menu">✕</button></div>
+    <nav>
+      <a href="#home">Home</a><a href="#about">About</a><a href="#experience">Journey</a>
+      <a href="#projects">Projects</a><a href="#focus">Focus</a><a href="#skills">Toolbox</a><a href="#contact">Contact</a>
+      <a data-resume href="#">Download résumé ↓</a>
+    </nav>
+    <p class="eyebrow">B.Tech ECS · KIIT · 2027</p>
+  </div>
+</div>
+
+<main>
+<!-- HERO -->
+<section id="home">
+  <div class="wrap hero-wrap">
+    <h1 class="hero-title">
+      <span class="small rv">Hello, I'm</span>
+      <span class="metal rv">Adyasha</span>
+    </h1>
+    <div class="hero-row">
+      <div class="hero-left rv">
+        <span class="eyebrow">B.Tech ECS · KIIT · Class of 2027</span>
+        <a class="circle" href="#about" aria-label="Scroll to about">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 7l10 10M17 7v10H7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+      <div class="hero-photo">
+        <img id="hero-photo" src="assets/photo.png" alt="Portrait of Adyasha" width="600" height="760" fetchpriority="high">
+      </div>
+      <div class="hero-right rv">
+        <p id="hero-tagline">I build machine learning that looks at the physical world: chips, cells and stars.</p>
+        <div class="ticks">
+          <a href="#focus" data-focus="0">MACHINE LEARNING</a>
+          <a href="#focus" data-focus="1">HARDWARE SECURITY</a>
+          <a href="#focus" data-focus="2">FULL-STACK</a>
+        </div>
+        <div class="hero-btns">
+          <a class="btn solid" data-resume href="#">Download résumé ↓</a>
+          <a class="btn" href="#projects">View projects</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="marquee" aria-hidden="true">
+    <div>
+      <span>Hardware Trojan Detection</span><span>·</span><span>GastricSentinel</span><span>·</span><span>Exoplanet Finder</span><span>·</span><span>Hermes</span><span>·</span><span>Ondeck</span><span>·</span>
+      <span>Hardware Trojan Detection</span><span>·</span><span>GastricSentinel</span><span>·</span><span>Exoplanet Finder</span><span>·</span><span>Hermes</span><span>·</span><span>Ondeck</span><span>·</span>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT: scroll-expand media -->
+<section id="about">
+  <div class="sx-scroll" id="sx-scroll">
+   <div class="sx-sticky" id="sx-stage">
+    <div class="sx-title" aria-hidden="true">
+      <span id="sx-left">Chips, cells</span>
+      <span id="sx-right">&amp; stars</span>
+    </div>
+    <div class="sx-card" id="sx-card">
+      <img src="assets/about-art.svg" alt="" class="sx-img" id="sx-img">
+      <div class="sx-shade" id="sx-shade"></div>
+      <div class="sx-text" id="sx-text">
+        <span class="eyebrow">( About )</span>
+        <p id="statement">I'm a third-year Electronics and Computer Science student who likes problems where hardware, data and a bit of poetry meet. I train models on power traces, tissue slides and light curves, and I care that the results hold up when someone pushes on them.</p>
+      </div>
+    </div>
+    <div class="sx-hint" id="sx-hint">Scroll ↓</div>
+   </div>
+  </div>
+  <div class="wrap">
+    <div class="facts rv">
+      <div><b>2027</b><span>Graduating</span></div>
+      <div><b>5</b><span>Projects</span></div>
+      <div><b>KIIT</b><span>University</span></div>
+      <div><b>ML + HW</b><span>Where I work</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE: horizontal spatial timeline -->
+<section id="experience">
+  <div class="exp-sticky" id="exp-sticky">
+    <div class="exp-track" id="exp-track">
+      <div class="panel intro">
+        <div><span class="eyebrow">( Journey )</span>
+        <h2>Scroll<br>through<br>my path.</h2></div>
+        <p>Study, clubs, volunteering and the projects I keep coming back to.</p>
+      </div>
+      <article class="panel">
+        <div><span class="tag">Education</span><h3>B.Tech, Electronics and Computer Science</h3></div>
+        <p>KIIT University. Third year, graduating May 2027. Coursework sits between circuits and computing, which is exactly where my projects live.</p>
+        <span class="year" data-parallax>27</span><div class="flow"></div>
+      </article>
+      <article class="panel">
+        <div><span class="tag">Club role</span><h3>Graphic Designer and Content Writer</h3></div>
+        <p>Lakshya School of Electronics club. Posters, visuals and written pieces that explain electronics to a wider campus audience.</p>
+        <span class="year" data-parallax>DSN</span><div class="flow"></div>
+      </article>
+      <article class="panel">
+        <div><span class="tag">Service</span><h3>NSS Volunteering</h3></div>
+        <p>Active in the National Service Scheme, taking part in community work alongside academics.</p>
+        <span class="year" data-parallax>NSS</span><div class="flow"></div>
+      </article>
+      <article class="panel">
+        <div><span class="tag">Certifications</span><h3>SAP BTP Developer · Complete Web Development</h3></div>
+        <p>SAP BTP Developer through ExcelR and KIIT University, and a Complete Web Development course on Udemy.</p>
+        <span class="year" data-parallax>CERT</span><div class="flow"></div>
+      </article>
+      <article class="panel">
+        <div><span class="tag">Now</span><h3>Final-year project on Hardware Trojans</h3></div>
+        <p>Working with Group ECSc_14 on detecting Trojans in FPGA AES-128 circuits, with a Basys3 board on the bench.</p>
+        <span class="year" data-parallax>NOW</span><div class="flow"></div>
+      </article>
+    </div>
+    <div class="exp-progress"><i id="exp-bar"></i></div>
+  </div>
+</section>
+
+<!-- PROJECTS: 3D drum reel -->
+<section id="projects">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 class="rv">Selected<br>work</h2>
+      <p class="eyebrow rv">Drag the reel · click the front card</p>
+    </div>
+  </div>
+  <div class="wheel" id="wheel" tabindex="0" aria-label="Project reel. Use arrow keys to browse, Enter to open.">
+    <div class="drum" id="drum"></div>
+  </div>
+  <div class="wrap wheel-meta">
+    <button class="circle sm" id="wheel-prev" aria-label="Previous project">↑</button>
+    <div class="wheel-now"><span id="wheel-count">01 / 05</span><b id="wheel-name"></b><em id="wheel-status"></em></div>
+    <button class="circle sm" id="wheel-next" aria-label="Next project">↓</button>
+  </div>
+</section>
+
+<!-- FOCUS: accordion carousel -->
+<section id="focus">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 class="rv">What I<br>focus on</h2>
+      <p class="eyebrow rv">Hover or tap a card</p>
+    </div>
+    <div class="flexcar" id="flexcar" role="tablist"></div>
+  </div>
+</section>
+
+<!-- TOOLBOX -->
+<section id="skills">
+  <div class="wrap">
+    <div class="sec-head"><h2 class="rv">Toolbox</h2></div>
+    <div class="skillgrid rv">
+      <div><h3>Machine learning</h3><p>Python · PyTorch · scikit-learn · 1D-CNN · Random Forest · SVM · Time-series classification</p></div>
+      <div><h3>Hardware</h3><p>Verilog · FPGA (Basys3) · AES-128 · Power side-channel analysis · INA219 · Arduino</p></div>
+      <div><h3>Web and data</h3><p>React · FastAPI · RAG with Chroma · Web development · SAP BTP</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="wrap">
+    <span class="eyebrow">( Contact )</span>
+    <h2 class="rv">Let's build<br><span class="metal">something.</span></h2>
+    <p>Open to internships and roles in software, AI and data, and to curious conversations about hardware and ML.</p>
+    <div class="links-row">
+      <a class="btn solid" id="mail-btn" data-href="mailto" href="#">Email me</a>
+      <button class="btn" id="copy-mail" type="button">Copy email</button>
+      <a class="btn" data-resume href="#">Résumé ↓</a>
+      <a class="btn" data-href="github" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn" data-href="linkedin" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+    <footer><span>© <span id="year">2026</span> Adyasha</span><a href="#home">Back to top ↑</a></footer>
+  </div>
+</section>
+</main>
+
+<!-- Project modal -->
+<div id="modal" role="dialog" aria-modal="true" aria-labelledby="m-title" aria-hidden="true">
+  <div class="card" id="modal-card"></div>
+</div>
+
+<script src="js/config.js"></script>
+<script src="js/projects-data.js"></script>
+<script src="js/main.js"></script>
+<script src="js/scroll-expand-media.js"></script>
+<script src="js/experience-section.js"></script>
+<script src="js/works-wheel.js"></script>
+<script src="js/flex-carousel.js"></script>
+</body>
+</html>
