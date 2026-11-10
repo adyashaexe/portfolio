@@ -11,7 +11,7 @@ window.PROJECTS = [
     image: "assets/projects/trojan.svg",
     accent: ["#22d3ee", "#3b82f6"],
     blurb:
-      "For my major project, I'm looking at whether power traces can reveal hardware Trojans in an FPGA AES-128 implementation. I'm collecting traces from a Basys3 board and testing ML models to see which patterns are actually useful.",
+      "For my major project, I'm investigating whether an FPGA's power trace can expose hardware Trojans in an AES-128 implementation. I'm collecting measurements from a Basys3 board and comparing models; the real question is whether a pattern is a reliable signal or just a coincidence in the data.",
     done: [
       "Full AES-128 in Verilog, verified against FIPS-197 test vectors",
       "Power-trace dataset: clean core plus 3 Trojan variants on a Basys3 with an INA219 sensor",
@@ -29,7 +29,7 @@ window.PROJECTS = [
     image: "assets/projects/gastric.svg",
     accent: ["#f472b6", "#fb7185"],
     blurb:
-      "GastricSentinel explores multimodal learning with histopathology images and genomic data. I also added Grad-CAM and SHAP because I wanted to understand what the model was using to make a prediction, not just see a score.",
+      "GastricSentinel explores multimodal learning with histopathology images and genomic data. I added Grad-CAM and SHAP to examine what contributes to a prediction. A score tells you what happened; it doesn't necessarily tell you why.",
     done: [
       "245K+ histopathology images (GasHisSDB) and about 450 TCGA-STAD genomic cases",
       "64% binary accuracy on noisy, imbalanced medical data, reported honestly",
@@ -47,7 +47,7 @@ window.PROJECTS = [
     image: "assets/projects/angesnet.svg",
     accent: ["#a78bfa", "#6366f1"],
     blurb:
-      "A network intrusion detection system that captures live traffic, extracts flow features and classifies potential threats. The interesting part was putting the capture, prediction and alerting pieces together so they work as one pipeline.",
+      "A network intrusion detection system that captures live traffic, extracts flow features and classifies potential threats. Building the full pipeline made the systems side of machine learning tangible: a model is only one part of something that has to work reliably end to end.",
     done: [
       "Trained on 2.8M+ CIC-IDS-2017 flows across 13 attack classes",
       "78-feature pipeline, with SMOTE to lift recall on the rare attacks",
@@ -64,7 +64,7 @@ window.PROJECTS = [
     image: "assets/projects/bytebite.svg",
     accent: ["#fbbf24", "#f97316"],
     blurb:
-      "A Java food-delivery application with a GUI. I built it to practise object-oriented design and work through a complete flow, from browsing the menu to placing and tracking an order.",
+      "A Java food-delivery application with a GUI, built to practise object-oriented design across a complete user flow. It was a useful reminder that even a small application has plenty of decisions hiding behind a straightforward interface.",
     done: [
       "Core flow: browsing the menu, ordering and tracking",
       "Java GUI front end",
@@ -82,7 +82,7 @@ window.FOCUS = [
     title: "Machine learning",
     image: "assets/focus/ml.svg",
     accent: ["#a78bfa", "#6366f1"],
-    text: "Models for images, signals and time-series: CNNs, 1D-CNNs, classical baselines, multimodal fusion. I check for leakage before I trust a number, and I distrust any metric that looks too good.",
+    text: "Models for images, signals and time-series: CNNs, 1D-CNNs, classical baselines and multimodal fusion. I care about evaluation as much as the model itself. A strong metric is interesting; understanding how it was earned is more important.",
     tags: ["PyTorch", "TensorFlow", "scikit-learn", "SHAP"]
   },
   {
@@ -90,7 +90,7 @@ window.FOCUS = [
     title: "Hardware & security",
     image: "assets/focus/hardware.svg",
     accent: ["#22d3ee", "#3b82f6"],
-    text: "FPGA design in Verilog, power-measurement rigs and side-channel analysis for spotting tampered circuits. Also a real-time intrusion detector, because paranoia is a transferable skill.",
+    text: "FPGA design in Verilog, power-measurement setups and side-channel analysis for studying tampered circuits. I'm interested in what hardware reveals beyond its intended output — sometimes the behaviour around a computation is as informative as the computation itself.",
     tags: ["Verilog", "Basys3", "Scapy", "Arduino"]
   },
   {
@@ -98,7 +98,7 @@ window.FOCUS = [
     title: "GenAI, MLOps & full-stack",
     image: "assets/focus/web.svg",
     accent: ["#f472b6", "#fb7185"],
-    text: "LLMs, RAG and agents, shipped like real software: Docker, CI/CD, MLflow, FastAPI. A notebook is not a product.",
+    text: "LLMs, retrieval-augmented generation and agents, with an interest in the engineering needed to make them dependable: Docker, CI/CD, MLflow and FastAPI. Getting a demo to run is one problem; making it maintainable is another.",
     tags: ["LangChain", "RAG", "Docker", "FastAPI"]
   }
 ];
