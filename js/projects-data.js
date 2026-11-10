@@ -11,7 +11,7 @@ window.PROJECTS = [
     image: "assets/projects/trojan.svg",
     accent: ["#22d3ee", "#3b82f6"],
     blurb:
-      "Chips can keep secrets. Power traces are terrible at keeping them. I study FPGA AES-128 power traces to detect hardware Trojans, then let machine learning help separate clean behaviour from suspicious behaviour.",
+      "For my major project, I'm looking at whether power traces can reveal hardware Trojans in an FPGA AES-128 implementation. I'm collecting traces from a Basys3 board and testing ML models to see which patterns are actually useful.",
     done: [
       "Full AES-128 in Verilog, verified against FIPS-197 test vectors",
       "Power-trace dataset: clean core plus 3 Trojan variants on a Basys3 with an INA219 sensor",
@@ -29,7 +29,7 @@ window.PROJECTS = [
     image: "assets/projects/gastric.svg",
     accent: ["#f472b6", "#fb7185"],
     blurb:
-      "A prediction without an explanation is just a very confident guess. GastricSentinel combines histopathology images and genomic data, with Grad-CAM and SHAP helping show what the model paid attention to.",
+      "GastricSentinel explores multimodal learning with histopathology images and genomic data. I also added Grad-CAM and SHAP because I wanted to understand what the model was using to make a prediction, not just see a score.",
     done: [
       "245K+ histopathology images (GasHisSDB) and about 450 TCGA-STAD genomic cases",
       "64% binary accuracy on noisy, imbalanced medical data, reported honestly",
@@ -47,7 +47,7 @@ window.PROJECTS = [
     image: "assets/projects/angesnet.svg",
     accent: ["#a78bfa", "#6366f1"],
     blurb:
-      "Packets enter. Suspicion levels rise. A real-time intrusion detection system that captures network traffic, builds flow features, and classifies potential threats. Basically, airport security for packets.",
+      "A network intrusion detection system that captures live traffic, extracts flow features and classifies potential threats. The interesting part was putting the capture, prediction and alerting pieces together so they work as one pipeline.",
     done: [
       "Trained on 2.8M+ CIC-IDS-2017 flows across 13 attack classes",
       "78-feature pipeline, with SMOTE to lift recall on the rare attacks",
@@ -64,7 +64,7 @@ window.PROJECTS = [
     image: "assets/projects/bytebite.svg",
     accent: ["#fbbf24", "#f97316"],
     blurb:
-      "Because cold pizza is a personal betrayal. ByteBite is a Java food-delivery platform with a GUI, built to put object-oriented design to work.",
+      "A Java food-delivery application with a GUI. I built it to practise object-oriented design and work through a complete flow, from browsing the menu to placing and tracking an order.",
     done: [
       "Core flow: browsing the menu, ordering and tracking",
       "Java GUI front end",
