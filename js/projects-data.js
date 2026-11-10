@@ -11,7 +11,7 @@ window.PROJECTS = [
     image: "assets/projects/trojan.svg",
     accent: ["#22d3ee", "#3b82f6"],
     blurb:
-      "Chips can hide things. Power draw cannot. I catch hardware Trojans in an FPGA AES-128 core by reading its power trace, then let machine learning decide who is clean and who is lying.",
+      "Chips can keep secrets. Power traces are terrible at keeping them. I study FPGA AES-128 power traces to detect hardware Trojans, then let machine learning help separate clean behaviour from suspicious behaviour.",
     done: [
       "Full AES-128 in Verilog, verified against FIPS-197 test vectors",
       "Power-trace dataset: clean core plus 3 Trojan variants on a Basys3 with an INA219 sensor",
@@ -29,7 +29,7 @@ window.PROJECTS = [
     image: "assets/projects/gastric.svg",
     accent: ["#f472b6", "#fb7185"],
     blurb:
-      "A prediction without an explanation is just an opinion. Multimodal deep learning on histopathology images and genomic data, with Grad-CAM and SHAP showing its work.",
+      "A prediction without an explanation is just a very confident guess. GastricSentinel combines histopathology images and genomic data, with Grad-CAM and SHAP helping show what the model paid attention to.",
     done: [
       "245K+ histopathology images (GasHisSDB) and about 450 TCGA-STAD genomic cases",
       "64% binary accuracy on noisy, imbalanced medical data, reported honestly",
@@ -47,7 +47,7 @@ window.PROJECTS = [
     image: "assets/projects/angesnet.svg",
     accent: ["#a78bfa", "#6366f1"],
     blurb:
-      "Packets walk in, verdicts walk out. A network intrusion detection system that captures live traffic, builds flow features and classifies threats in real time.",
+      "Packets enter. Suspicion levels rise. A real-time intrusion detection system that captures network traffic, builds flow features, and classifies potential threats. Basically, airport security for packets.",
     done: [
       "Trained on 2.8M+ CIC-IDS-2017 flows across 13 attack classes",
       "78-feature pipeline, with SMOTE to lift recall on the rare attacks",
@@ -64,7 +64,7 @@ window.PROJECTS = [
     image: "assets/projects/bytebite.svg",
     accent: ["#fbbf24", "#f97316"],
     blurb:
-      "Because cold pizza is a design flaw. An online food delivery platform in Java with a GUI, built to show object-oriented design doing real work.",
+      "Because cold pizza is a personal betrayal. ByteBite is a Java food-delivery platform with a GUI, built to put object-oriented design to work.",
     done: [
       "Core flow: browsing the menu, ordering and tracking",
       "Java GUI front end",
