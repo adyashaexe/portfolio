@@ -3,7 +3,7 @@
    ============================================================ */
 window.SITE = {
   name: "Adyasha",
-  tagline: "I build and study ML systems across chips, cells, and networks. Curious by default; suspicious of 99% accuracy without receipts.",
+  tagline: "I'm an Electronics and Computer Science student interested in machine learning, hardware and data. I like understanding how things work, building them, and asking one more question than necessary.",
 
   email: "adyashamohanty0901@gmail.com",
   github: "https://github.com/adyashaexe",
