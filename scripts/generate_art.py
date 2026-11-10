@@ -71,31 +71,31 @@ def gastric():
     return wrap(w, h, "".join(body))
 
 
-def exoplanet():
-    r = random.Random(3)
+def bytebite():
+    r = random.Random(5)
     w, h = 800, 500
     body = []
-    for _ in range(140):
-        body.append(f'<circle cx="{r.uniform(0, w):.0f}" cy="{r.uniform(0, 330):.0f}" r="{r.uniform(.6, 1.7):.1f}" fill="#fff" opacity="{r.uniform(.2, .8):.2f}"/>')
-    glow = '<radialGradient id="sun"><stop offset="0" stop-color="#fff"/><stop offset=".35" stop-color="#d8d8dc"/><stop offset="1" stop-color="#d8d8dc" stop-opacity="0"/></radialGradient>'
-    body.append('<circle cx="400" cy="150" r="130" fill="url(#sun)"/>')
-    for k, rx in enumerate((190, 270, 350)):
-        body.append(f'<ellipse cx="400" cy="150" rx="{rx}" ry="{rx * .23:.0f}" fill="none" stroke="#3b3b42" stroke-width="1.4"/>')
-    body.append('<circle cx="590" cy="187" r="11" fill="#0b0b0c" stroke="#f2f2f0" stroke-width="1.6"/>')
-    # light curve with transit dip
-    pts = []
-    for i in range(0, w + 1, 4):
-        v = r.uniform(-2.2, 2.2)
-        if 300 < i < 420:
-            v += 22 * (1 - abs((i - 360) / 60) ** 3 * 0.9)
-        pts.append(f"{i},{400 + v:.1f}")
-    body.append(f'<polyline points="{" ".join(pts)}" fill="none" stroke="#f2f2f0" stroke-width="2"/>')
-    body.append('<line x1="0" y1="400" x2="800" y2="400" stroke="#2c2c31" stroke-dasharray="4 8"/>')
-    return wrap(w, h, "".join(body), glow)
-
-
-
-
+    # city grid
+    for x in range(0, w + 1, 50):
+        body.append(f'<line x1="{x}" y1="0" x2="{x}" y2="{h}" stroke="#26262b" stroke-width="1"/>')
+    for y in range(0, h + 1, 50):
+        body.append(f'<line x1="0" y1="{y}" x2="{w}" y2="{y}" stroke="#26262b" stroke-width="1"/>')
+    for _ in range(18):
+        bx, by = r.randrange(0, w - 100, 50), r.randrange(0, h - 100, 50)
+        body.append(f'<rect x="{bx + 8}" y="{by + 8}" width="{r.choice((34, 84))}" height="{r.choice((34, 84))}" rx="4" fill="#141417" stroke="#2c2c31"/>')
+    # delivery route
+    route = "110,380 110,300 260,300 260,200 450,200 450,120 650,120"
+    body.append(f'<polyline points="{route}" fill="none" stroke="#f2f2f0" stroke-width="3.2" stroke-linejoin="round" stroke-dasharray="2 12" stroke-linecap="round"/>')
+    # restaurant (bowl) at the start
+    body.append('<circle cx="110" cy="380" r="26" fill="#141416" stroke="#f2f2f0" stroke-width="2"/>')
+    body.append('<path d="M94 376 H126 A16 16 0 0 1 94 376 Z" fill="#f2f2f0"/>')
+    body.append('<path d="M102 368 q4 -8 0 -12 M110 368 q4 -8 0 -12 M118 368 q4 -8 0 -12" fill="none" stroke="#8a8a92" stroke-width="1.6" stroke-linecap="round"/>')
+    # destination pin
+    body.append('<path d="M650 78 a28 28 0 0 1 28 28 c0 22 -28 48 -28 48 s-28 -26 -28 -48 a28 28 0 0 1 28 -28 Z" fill="#f2f2f0"/>')
+    body.append('<circle cx="650" cy="106" r="10" fill="#0b0b0c"/>')
+    # courier dot mid-route
+    body.append('<circle cx="260" cy="250" r="9" fill="#f2f2f0"/><circle cx="260" cy="250" r="20" fill="none" stroke="#8a8a92" stroke-width="1.2" opacity=".7"/>')
+    return wrap(w, h, "".join(body))
 
 
 def angesnet():
@@ -190,7 +190,7 @@ def photo_placeholder():
 if __name__ == "__main__":
     save("projects/trojan.svg", trojan())
     save("projects/gastric.svg", gastric())
-    save("projects/exoplanet.svg", exoplanet())
+    save("projects/bytebite.svg", bytebite())
     save("projects/angesnet.svg", angesnet())
     save("about-art.svg", about())
     save("focus/ml.svg", focus_ml())

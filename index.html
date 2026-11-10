@@ -1,16 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Adyasha — ML & Electronics Portfolio</title>
-  <meta name="description" content="Portfolio of Adyasha, B.Tech Electronics and Computer Science student at KIIT University, building machine learning for chips, cells and stars.">
-  <meta name="theme-color" content="#0b0b0c">
-  <meta property="og:title" content="Adyasha — ML & Electronics Portfolio">
-  <meta property="og:description" content="Machine learning for chips, cells and stars.">
+  <title>Adyasha Mohanty | ML, Hardware &amp; MLOps Portfolio</title>
+  <meta name="description" content="Portfolio of Adyasha Mohanty, B.Tech Electronics and Computer Science student at KIIT University, building machine learning for chips, cells and networks.">
+  <meta name="theme-color" content="#0a0a16">
+  <meta name="color-scheme" content="dark light">
+  <meta property="og:title" content="Adyasha Mohanty | ML, Hardware &amp; MLOps Portfolio">
+  <meta property="og:description" content="Teaching machines to be right for the right reasons.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script>
+    /* Set the theme before first paint so there is no flash. */
+    (function () {
+      var t = null;
+      try { t = localStorage.getItem("theme"); } catch (e) {}
+      if (!t) t = window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+      document.documentElement.setAttribute("data-theme", t);
+    })();
+  </script>
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
@@ -41,6 +51,8 @@
       <a href="#projects" data-nav="projects">Projects</a>
       <a href="#focus" data-nav="focus">Focus</a>
       <a href="#skills" data-nav="skills">Toolbox</a>
+      <a href="#writing" data-nav="writing">Writing</a>
+      <a href="#contact" data-nav="contact">Contact</a>
     </nav>
     <div class="nav-right">
       <a class="social" data-href="github" target="_blank" rel="noopener" title="GitHub" aria-label="GitHub">
@@ -49,6 +61,10 @@
       <a class="social" data-href="linkedin" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
       </a>
+      <button class="social theme-btn" type="button" data-theme-toggle aria-label="Switch to light theme" title="Toggle theme">
+        <svg class="i-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        <svg class="i-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
       <a class="cta" id="resume-btn-nav" data-resume href="#">Résumé ↓</a>
       <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" x2="20" y1="7" y2="7"/><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="17" y2="17"/></svg>
@@ -63,7 +79,8 @@
     <div class="drawer-top"><span class="brand">ADYASHA<i></i></span><button id="drawer-close" aria-label="Close menu">✕</button></div>
     <nav>
       <a href="#home">Home</a><a href="#about">About</a><a href="#experience">Journey</a>
-      <a href="#projects">Projects</a><a href="#focus">Focus</a><a href="#skills">Toolbox</a><a href="#contact">Contact</a>
+      <a href="#projects">Projects</a><a href="#focus">Focus</a><a href="#skills">Toolbox</a><a href="#writing">Writing</a><a href="#contact">Contact</a>
+      <a href="#" data-theme-toggle>Switch theme ◐</a>
       <a data-resume href="#">Download résumé ↓</a>
     </nav>
     <p class="eyebrow">B.Tech ECS · KIIT · 2027</p>
@@ -91,11 +108,11 @@
         <img id="hero-photo" src="assets/photo.png" alt="Portrait of Adyasha" width="600" height="760" fetchpriority="high">
       </div>
       <div class="hero-right rv">
-        <p id="hero-tagline">I build machine learning that looks at the physical world: chips, cells and stars.</p>
+        <p id="hero-tagline">From transistors to transformers, teaching machines to think (and occasionally behave)</p>
         <div class="ticks">
           <a href="#focus" data-focus="0">MACHINE LEARNING</a>
           <a href="#focus" data-focus="1">HARDWARE SECURITY</a>
-          <a href="#focus" data-focus="2">FULL-STACK</a>
+          <a href="#focus" data-focus="2">GENAI &amp; MLOPS</a>
         </div>
         <div class="hero-btns">
           <a class="btn solid" data-resume href="#">Download résumé ↓</a>
@@ -106,8 +123,8 @@
   </div>
   <div class="marquee" aria-hidden="true">
     <div>
-      <span>Hardware Trojan Detection</span><span>·</span><span>GastricSentinel</span><span>·</span><span>Exoplanet Finder</span><span>·</span><span>Angesnet</span><span>·</span>
-      <span>Hardware Trojan Detection</span><span>·</span><span>GastricSentinel</span><span>·</span><span>Exoplanet Finder</span><span>·</span><span>Angesnet</span><span>·</span>
+      <span>Hardware Trojan Detection</span><span>·</span><span>GastricSentinel</span><span>·</span><span>AegisNet</span><span>·</span><span>ByteBite</span><span>·</span><span>Honest metrics only</span><span>·</span>
+      <span>Hardware Trojan Detection</span><span>·</span><span>GastricSentinel</span><span>·</span><span>AegisNet</span><span>·</span><span>ByteBite</span><span>·</span><span>Honest metrics only</span><span>·</span>
     </div>
   </div>
 </section>
@@ -118,17 +135,17 @@
    <div class="sx-sticky" id="sx-stage">
     <div class="sx-title" aria-hidden="true">
       <span id="sx-left">Chips, cells</span>
-      <span id="sx-right">&amp; stars</span>
+      <span id="sx-right">&amp; packets</span>
     </div>
     <div class="sx-card" id="sx-card">
       <img src="assets/about-art.svg" alt="" class="sx-img" id="sx-img">
       <div class="sx-shade" id="sx-shade"></div>
       <div class="sx-text" id="sx-text">
         <span class="eyebrow">( About )</span>
-        <p id="statement">I'm a third-year Electronics and Computer Science student who likes problems where hardware, data and a bit of poetry meet. I train models on power traces, tissue slides and light curves, and I care that the results hold up when someone pushes on them.</p>
+        <p id="statement">I'm a Final-year Electronics and Computer Science student at KIIT who likes problems where hardware, data and a bit of poetry meet. I train models on power traces, tissue slides and network flows, and I care that the results hold up when someone pushes on them. I also design, write, and politely distrust any metric that looks too good to be true.</p>
       </div>
     </div>
-    <div class="sx-hint" id="sx-hint">Scroll ↓</div>
+    <div class="sx-hint" id="sx-hint">Scroll ↓ (it expands, trust me)</div>
    </div>
   </div>
   <div class="wrap">
@@ -148,21 +165,36 @@
       <div class="panel intro">
         <div><span class="eyebrow">( Journey )</span>
         <h2>Scroll<br>through<br>my path.</h2></div>
-        <p>Study, clubs, volunteering and the projects I keep coming back to.</p>
+        <p>Study, clubs, volunteering and the projects I keep coming back to. There is no quiz at the end.</p>
       </div>
-      <article class="panel">
+      <article class="panel" data-step="Education">
         <div><span class="tag">Education</span><h3>B.Tech, Electronics and Computer Science</h3></div>
-        <p>KIIT University. Third year, graduating May 2027. Coursework sits between circuits and computing, which is exactly where my projects live.</p>
+        <p>KIIT University, Bhubaneswar. Aug 2023 to present, graduating 2027, CGPA 7.00 / 10. Coursework sits between circuits and computing: DSA, operating systems, OOP, databases, networks, cloud, cryptography, network security and computer vision.</p>
         <span class="year" data-parallax>27</span><div class="flow"></div>
       </article>
-      <article class="panel">
-        <div><span class="tag">Certifications</span><h3>SAP BTP Developer · Complete Web Development</h3></div>
-        <p>SAP BTP Developer through ExcelR and KIIT University, and a Complete Web Development course on Udemy.</p>
+      <article class="panel" data-step="Design">
+        <div><span class="tag">Campus</span><h3>Graphic designer and content writer, NSS Lakshya</h3></div>
+        <p>School of Electronics, Aug 2025 to May 2026. Posters, copy, and the occasional "can you make the logo bigger" negotiation.</p>
+        <span class="year" data-parallax>NSS</span><div class="flow"></div>
+      </article>
+      <article class="panel" data-step="Certified">
+        <div><span class="tag">Certifications</span><h3>GenAI with LangChain · Data Science and ML bootcamp · Web Development</h3></div>
+        <p>Udemy, Oct 2026: Generative AI with LangChain and Hugging Face (70 hours) and the Data Science, ML, DL and NLP Bootcamp (101.5 hours). Plus 97 hours of Web Development in Dec 2025, where I learned to centre a div and told no one how long it took.</p>
         <span class="year" data-parallax>CERT</span><div class="flow"></div>
       </article>
-      <article class="panel">
-        <div><span class="tag">Now</span><h3>Final-year project on Hardware Trojans</h3></div>
-        <p>Working with Group ECSc_14 on detecting Trojans in FPGA AES-128 circuits, with a Basys3 board on the bench.</p>
+      <article class="panel" data-step="Open source">
+        <div><span class="tag">Open source</span><h3>Contributor, GirlScript Summer of Code 2026</h3></div>
+        <p>Apr to Jul 2026. Pull requests, code review, and learning how to be wrong in public with grace.</p>
+        <span class="year" data-parallax>OSS</span><div class="flow"></div>
+      </article>
+      <article class="panel" data-step="McKinsey">
+        <div><span class="tag">Program</span><h3>McKinsey Forward Program</h3></div>
+        <p>A 10-week program in structured thinking, Oct 2026 to present. My notes are now suspiciously well organised.</p>
+        <span class="year" data-parallax>10W</span><div class="flow"></div>
+      </article>
+      <article class="panel" data-step="Now">
+        <div><span class="tag">Now</span><h3>Hunting hardware Trojans</h3></div>
+        <p>Major project with Group ECSc_14: detecting Trojans in an FPGA AES-128 core from its power trace, with a Basys3 on the bench and a 1D-CNN doing the interrogating.</p>
         <span class="year" data-parallax>NOW</span><div class="flow"></div>
       </article>
     </div>
@@ -175,7 +207,7 @@
   <div class="wrap">
     <div class="sec-head">
       <h2 class="rv">Selected<br>work</h2>
-      <p class="eyebrow rv">Drag the reel · click the front card</p>
+      <p class="eyebrow rv">Drag the reel · click the front card · it won't bite</p>
     </div>
   </div>
   <div class="wheel" id="wheel" tabindex="0" aria-label="Project reel. Use arrow keys to browse, Enter to open.">
@@ -193,7 +225,7 @@
   <div class="wrap">
     <div class="sec-head">
       <h2 class="rv">What I<br>focus on</h2>
-      <p class="eyebrow rv">Hover or tap a card</p>
+      <p class="eyebrow rv">Hover or tap a card · they like attention</p>
     </div>
     <div class="flexcar" id="flexcar" role="tablist"></div>
   </div>
@@ -208,20 +240,49 @@
   </div>
 </section>
 
+<!-- WRITING -->
+<section id="writing">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 class="rv">Words,<br>sometimes</h2>
+      <p class="eyebrow rv">Medium · technology and the human mind</p>
+    </div>
+    <div class="posts" id="posts"></div>
+    <p class="posts-more rv"><a data-href="medium" target="_blank" rel="noopener">More on my Medium profile ↗</a></p>
+  </div>
+</section>
+
 <!-- CONTACT -->
 <section id="contact">
   <div class="wrap">
     <span class="eyebrow">( Contact )</span>
     <h2 class="rv">Let's build<br><span class="metal">something.</span></h2>
-    <p>Open to internships and roles in software, AI and data, and to curious conversations about hardware and ML.</p>
+    <p>Open to internships and roles in software, AI and data, and to curious conversations about hardware and ML. Bring a messy problem. I like those.</p>
     <div class="links-row">
       <a class="btn solid" id="mail-btn" data-href="mailto" href="#">Email me</a>
       <button class="btn" id="copy-mail" type="button">Copy email</button>
       <a class="btn" data-resume href="#">Résumé ↓</a>
       <a class="btn" data-href="github" target="_blank" rel="noopener">GitHub</a>
       <a class="btn" data-href="linkedin" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn" data-href="medium" target="_blank" rel="noopener">Medium</a>
     </div>
-    <footer><span>© <span id="year">2026</span> Adyasha</span><a href="#home">Back to top ↑</a></footer>
+
+    <form class="cform" id="contact-form" novalidate>
+      <h3>Or just type a message</h3>
+      <p class="cform-sub">It lands straight in my inbox. No chatbot in between, I promise.</p>
+      <div class="cf-row">
+        <label class="cf-field"><span>Your name</span><input id="cf-name" name="name" type="text" autocomplete="name" required placeholder="Ada Lovelace"></label>
+        <label class="cf-field"><span>Your email</span><input id="cf-email" name="email" type="email" autocomplete="email" required placeholder="ada@analytical.engine"></label>
+      </div>
+      <label class="cf-field"><span>Message</span><textarea id="cf-msg" name="message" rows="5" required placeholder="Tell me what you're building, or what's on fire."></textarea></label>
+      <input class="cf-hp" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <div class="cf-foot">
+        <button class="btn solid" type="submit" id="cf-send">Send message</button>
+        <p class="cf-status" id="cf-status" role="status" aria-live="polite"></p>
+      </div>
+    </form>
+
+    <footer><span>© <span id="year">2026</span> Adyasha · If you're reading this, the CSS finally worked</span><a href="#home">Back to top ↑</a></footer>
   </div>
 </section>
 </main>
@@ -240,5 +301,7 @@
 <script src="js/flex-carousel.js"></script>
 <script src="js/effects.js"></script>
 <script src="js/toolbox.js"></script>
+<script src="js/writing.js"></script>
+<script src="js/contact.js"></script>
 </body>
 </html>

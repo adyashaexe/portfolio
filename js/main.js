@@ -79,10 +79,62 @@
   /* ---------- Copy email ---------- */
   var copy = $("#copy-mail");
   if (copy) copy.addEventListener("click", function () {
-    var done = function () { window.toast("Email copied: " + SITE.email); };
+    var done = function () { window.toast("Email copied: " + SITE.email + ". Paste responsibly."); };
     if (navigator.clipboard) navigator.clipboard.writeText(SITE.email).then(done, done);
     else done();
   });
+
+  /* ---------- Theme toggle (dark / light) ---------- */
+  var root = document.documentElement;
+  var themeBtns = $$("[data-theme-toggle]");
+  var themeJokes = {
+    light: ["Light mode on. Bugs have nowhere to hide.", "Bright mode. Your retinas filed a complaint.", "Light mode: now with 100% more squinting."],
+    dark: ["Dark mode on. Where the best bugs hide.", "Back to the dark side. We have gradients.", "Dark mode on. Your eyes say thanks."]
+  };
+  function applyTheme(t, announce) {
+    root.setAttribute("data-theme", t);
+    try { localStorage.setItem("theme", t); } catch (e) {}
+    var meta = $('meta[name="theme-color"]');
+    if (meta) meta.setAttribute("content", t === "dark" ? "#0a0a16" : "#f6f4ff");
+    themeBtns.forEach(function (b) { b.setAttribute("aria-label", t === "dark" ? "Switch to light theme" : "Switch to dark theme"); });
+    if (announce) { var l = themeJokes[t]; window.toast(l[Math.floor(Math.random() * l.length)], 2600); }
+  }
+  themeBtns.forEach(function (b) {
+    b.addEventListener("click", function (e) {
+      e.preventDefault();
+      var next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+      if (document.startViewTransition && !reduce) document.startViewTransition(function () { applyTheme(next, true); });
+      else applyTheme(next, true);
+    });
+  });
+  applyTheme(root.getAttribute("data-theme") || "dark", false);
+
+  /* ---------- A little humour ---------- */
+  var photoJokes = [
+    "Yes, that's really me. No, I'm not a deepfake.",
+    "Stop staring. The model is still training.",
+    "Accuracy of this portrait: 100%. Cropping accuracy: also 100%.",
+    "I look this confident only because the loss curve went down."
+  ], pj = 0;
+  if (photo) photo.addEventListener("click", function () { window.toast(photoJokes[pj++ % photoJokes.length], 3000); });
+  try {
+    console.log("%cHi, fellow inspector.", "font:700 16px system-ui;color:#9d86ff");
+    console.log("Found a bug? It is a feature. Found a hardware Trojan? Please email me: " + SITE.email);
+  } catch (e) {}
+
+  /* ---------- Hero parallax (eased, scroll-linked) ---------- */
+  if (!reduce) {
+    var hTitle = $(".hero-title"), hPhoto = $(".hero-photo img"), hAur = $(".aurora"), hRight = $(".hero-right"), hLeft = $(".hero-left");
+    window.smoothScroll(function () {
+      return Math.min(1, Math.max(0, window.scrollY / Math.max(1, window.innerHeight)));
+    }, function (p) {
+      if (hTitle) hTitle.style.translate = "0 " + (p * 90).toFixed(1) + "px";
+      if (hPhoto) hPhoto.style.translate = "0 " + (p * -46).toFixed(1) + "px";
+      if (hAur) hAur.style.translate = "0 " + (p * 120).toFixed(1) + "px";
+      if (hRight) hRight.style.translate = "0 " + (p * -30).toFixed(1) + "px";
+      if (hLeft) hLeft.style.translate = "0 " + (p * -30).toFixed(1) + "px";
+    });
+  }
 
   /* ---------- Preloader: "hello" in many languages ---------- */
   (function () {
@@ -144,7 +196,7 @@
   /* ---------- Header state + scroll-spy ---------- */
   var prog = $("#progress i");
   var header = $("#site-header"), links = $$("[data-nav]");
-  var spyIds = ["home", "about", "experience", "projects", "focus", "skills", "contact"];
+  var spyIds = ["home", "about", "experience", "projects", "focus", "skills", "writing", "contact"];
   window.onScrollRaf(function () {
     header.classList.toggle("scrolled", window.scrollY > 40);
     if (prog) {

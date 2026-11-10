@@ -1,6 +1,6 @@
 # Adyasha — Portfolio
 
-A dark, colour-accented editorial portfolio for an ML and electronics student: a multilingual "hello" preloader, big metallic hero with a portrait slot, a scroll-expanding About, a horizontal journey timeline, a 3D drag-reel of projects, an accordion focus carousel, a project detail modal, a résumé download button and a contact section.
+An editorial portfolio for an ML and electronics student, with a dark/light theme toggle: a multilingual "hello" preloader, big metallic hero with parallax, a scroll-expanding About, a horizontal journey timeline with a path that draws itself, a 3D drag-reel of projects, an accordion focus carousel, a project detail modal, a toolbox, Medium writing, a résumé download button and a contact section with a message form.
 
 Plain HTML, CSS and JavaScript. No build step, no frameworks, no dependencies.
 
@@ -36,7 +36,7 @@ You can also use the **Live Server** extension in VS Code: right-click `index.ht
 
 | What | Where |
 |---|---|
-| Email, GitHub, LinkedIn, tagline | `js/config.js` |
+| Email, GitHub, LinkedIn, Medium, tagline, form endpoint | `js/config.js` |
 | **Your photo** | Save a portrait as `assets/photo.png`. A transparent PNG cut-out looks best. Until then a placeholder silhouette is shown. |
 | **Your résumé** | Save your PDF as `assets/Adyasha_Resume.pdf` (or change the path in `js/config.js`). All the "Résumé ↓" buttons use it. |
 | Projects (reel + popups) | `js/projects-data.js` → `PROJECTS` (each has an `accent` colour pair) |
@@ -48,8 +48,8 @@ You can also use the **Live Server** extension in VS Code: right-click `index.ht
 
 Tips:
 - The hero photo is shown in black and white to match the theme. To keep it in color, delete `filter:grayscale(1) contrast(1.05);` from `.hero-photo img` in `css/styles.css`.
-- The Angesnet entry in `js/projects-data.js` is a placeholder: fill in its blurb, status, stack and repo link.
-- Search the project for `TODO` to find placeholders (email, LinkedIn, repo links for projects that don't have a repo yet).
+- **Contact form:** it posts to [FormSubmit](https://formsubmit.co) and emails the address in `js/config.js`. Send one test message after deploying, then click the confirmation link FormSubmit emails you (one time only). If sending ever fails, the form opens the visitor's email app instead.
+- The theme follows the visitor's system setting by default and remembers their choice.
 - Project artwork is generated. Re-create or tweak it with `python3 scripts/generate_art.py`, or drop in your own screenshots and point `image:` at them.
 
 ---
@@ -86,13 +86,14 @@ adyasha-portfolio/
 ├── css/styles.css             # all styles
 ├── js/
 │   ├── config.js              # your personal details  ← edit first
-│   ├── projects-data.js       # projects + focus cards ← edit second
+│   ├── projects-data.js       # projects, focus cards, toolbox, writing ← edit second
 │   ├── main.js                # loader, nav, toast, résumé button, modal
 │   ├── scroll-expand-media.js # About: card expands as you scroll
 │   ├── experience-section.js  # horizontal journey timeline
 │   ├── works-wheel.js         # 3D drum reel of projects
 │   └── flex-carousel.js       # accordion focus carousel
 ├── assets/
+│   ├── Adyasha_Resume.pdf     # résumé download
 │   ├── photo-placeholder.svg  # shown until you add assets/photo.png
 │   ├── about-art.svg
 │   ├── projects/*.svg         # project card artwork

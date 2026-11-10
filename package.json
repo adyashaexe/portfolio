@@ -2,7 +2,7 @@
   "name": "adyasha-portfolio",
   "version": "1.0.0",
   "private": true,
-  "description": "Dark, colour-accented editorial portfolio for an ML and electronics student",
+  "description": "Editorial portfolio (dark and light themes) for an ML and electronics student",
   "scripts": {
     "start": "python3 -m http.server 8080",
     "serve": "npx serve .",
