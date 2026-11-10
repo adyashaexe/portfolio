@@ -94,44 +94,27 @@ def exoplanet():
     return wrap(w, h, "".join(body), glow)
 
 
-def hermes():
-    r = random.Random(4)
+
+
+
+
+def angesnet():
+    r = random.Random(7)
     w, h = 800, 500
+    nodes = [(r.randint(60, 740), r.randint(50, 450)) for _ in range(34)]
     body = []
-    cx, cy = 560, 250
-    nodes = []
-    for i in range(13):
-        a = i / 13 * math.tau + r.uniform(-.15, .15)
-        rad = r.uniform(110, 200)
-        nodes.append((cx + math.cos(a) * rad, cy + math.sin(a) * rad * .85))
-    for x, y in nodes:
-        body.append(f'<line x1="{cx}" y1="{cy}" x2="{x:.0f}" y2="{y:.0f}" stroke="#3b3b42" stroke-width="1.4"/>')
-    for x, y in nodes:
-        body.append(f'<circle cx="{x:.0f}" cy="{y:.0f}" r="{r.randint(5, 10)}" fill="#0b0b0c" stroke="#8c8c92" stroke-width="1.6"/>')
-    body.append(f'<circle cx="{cx}" cy="{cy}" r="22" fill="#f2f2f0"/>')
-    # transcript lines
-    for i, wd in enumerate((220, 180, 240, 150, 200)):
-        y = 110 + i * 56
-        body.append(f'<rect x="60" y="{y}" width="{wd}" height="26" rx="13" fill="{"#2a2a30" if i % 2 else "#3d3d44"}"/>')
-        body.append(f'<circle cx="{60 + 16}" cy="{y + 13}" r="4" fill="#9a9aa0"/>')
+    for (x1, y1) in nodes:
+        near = sorted(nodes, key=lambda n: (n[0] - x1) ** 2 + (n[1] - y1) ** 2)[1:4]
+        for (x2, y2) in near:
+            body.append(f'<line x1="{x1}" y1="{y1}" x2="{x2}" y2="{y2}" stroke="#34343a" stroke-width="1.6"/>')
+    for i, (x, y) in enumerate(nodes):
+        big = i % 5 == 0
+        body.append(f'<circle cx="{x}" cy="{y}" r="{9 if big else 4.5}" fill="{"#f2f2f0" if big else "#5a5a62"}"/>')
+        if big:
+            body.append(f'<circle cx="{x}" cy="{y}" r="18" fill="none" stroke="#8a8a92" stroke-width="1.2" opacity=".7"/>')
     return wrap(w, h, "".join(body))
 
 
-def ondeck():
-    w, h = 800, 500
-    body = []
-    for i in range(6):
-        y = 60 + i * 66
-        hi = i == 2
-        body.append(f'<rect x="{150 if hi else 190}" y="{y}" width="{500 if hi else 420}" height="52" rx="14" fill="{"#f2f2f0" if hi else "#18181b"}" stroke="#34343a"/>')
-        col = "#0b0b0c" if hi else "#5a5a60"
-        body.append(f'<rect x="{176 if hi else 216}" y="{y + 14}" width="{150 if hi else 110}" height="8" rx="4" fill="{col}"/>')
-        body.append(f'<rect x="{176 if hi else 216}" y="{y + 30}" width="{90 if hi else 70}" height="6" rx="3" fill="{col}" opacity=".5"/>')
-        body.append(f'<circle cx="{620 if hi else 590}" cy="{y + 26}" r="9" fill="none" stroke="{col}" stroke-width="1.6"/>')
-    return wrap(w, h, "".join(body))
-
-
-# ---------- About (1600 x 1000) ----------
 def about():
     r = random.Random(7)
     w, h = 1600, 1000
@@ -190,17 +173,8 @@ def focus_web():
     return wrap(600, 900, "".join(body))
 
 
-def focus_design():
-    body = []
-    for k, (x, y, r) in enumerate(((240, 400, 150), (360, 470, 150), (300, 560, 150))):
-        body.append(f'<circle cx="{x}" cy="{y}" r="{r}" fill="none" stroke="{"#f2f2f0" if k == 0 else "#6a6a72"}" stroke-width="{2 if k == 0 else 1.5}"/>')
-    for i in range(8):
-        body.append(f'<line x1="60" y1="{250 + i * 60}" x2="540" y2="{250 + i * 60}" stroke="#1f1f23"/>')
-    body.append('<rect x="260" y="470" width="80" height="80" fill="#f2f2f0" opacity=".9"/>')
-    return wrap(600, 900, "".join(body))
 
 
-# ---------- Photo placeholder (portrait slot) ----------
 def photo_placeholder():
     body = (
         '<defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1">'
@@ -217,12 +191,10 @@ if __name__ == "__main__":
     save("projects/trojan.svg", trojan())
     save("projects/gastric.svg", gastric())
     save("projects/exoplanet.svg", exoplanet())
-    save("projects/hermes.svg", hermes())
-    save("projects/ondeck.svg", ondeck())
+    save("projects/angesnet.svg", angesnet())
     save("about-art.svg", about())
     save("focus/ml.svg", focus_ml())
     save("focus/hardware.svg", focus_hw())
     save("focus/web.svg", focus_web())
-    save("focus/design.svg", focus_design())
     save("photo-placeholder.svg", photo_placeholder())
     print("Artwork generated in assets/")

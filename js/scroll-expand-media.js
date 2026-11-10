@@ -46,8 +46,8 @@
     apply(); window.addEventListener("resize", apply);
     return;
   }
-  window.onScrollRaf(function () {
+  window.smoothScroll(function () {
     var total = scroll.offsetHeight - window.innerHeight;
-    render(clamp(-scroll.getBoundingClientRect().top / total, 0, 1));
-  });
+    return clamp(-scroll.getBoundingClientRect().top / total, 0, 1);
+  }, render);
 })();

@@ -17,9 +17,16 @@
 
 <!-- Preloader -->
 <div id="loader" aria-hidden="true">
-  <canvas id="orbit" width="440" height="440"></canvas>
-  <p>LOADING</p>
+  <div class="ld-blob b1"></div><div class="ld-blob b2"></div><div class="ld-blob b3"></div>
+  <div class="hello">
+    <div class="hello-word" id="hello-word">Hello</div>
+    <div class="hello-lang" id="hello-lang">English</div>
+  </div>
+  <div class="ld-bar"><i id="ld-bar"></i></div>
 </div>
+
+<div id="progress" aria-hidden="true"><i></i></div>
+<div id="glow" aria-hidden="true"></div>
 
 <div id="toasts" aria-live="polite"></div>
 
@@ -66,6 +73,8 @@
 <main>
 <!-- HERO -->
 <section id="home">
+  <div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
+  <canvas id="fx" aria-hidden="true"></canvas>
   <div class="wrap hero-wrap">
     <h1 class="hero-title">
       <span class="small rv">Hello, I'm</span>
@@ -97,8 +106,8 @@
   </div>
   <div class="marquee" aria-hidden="true">
     <div>
-      <span>Hardware Trojan Detection</span><span>·</span><span>GastricSentinel</span><span>·</span><span>Exoplanet Finder</span><span>·</span><span>Hermes</span><span>·</span><span>Ondeck</span><span>·</span>
-      <span>Hardware Trojan Detection</span><span>·</span><span>GastricSentinel</span><span>·</span><span>Exoplanet Finder</span><span>·</span><span>Hermes</span><span>·</span><span>Ondeck</span><span>·</span>
+      <span>Hardware Trojan Detection</span><span>·</span><span>GastricSentinel</span><span>·</span><span>Exoplanet Finder</span><span>·</span><span>Angesnet</span><span>·</span>
+      <span>Hardware Trojan Detection</span><span>·</span><span>GastricSentinel</span><span>·</span><span>Exoplanet Finder</span><span>·</span><span>Angesnet</span><span>·</span>
     </div>
   </div>
 </section>
@@ -124,8 +133,8 @@
   </div>
   <div class="wrap">
     <div class="facts rv">
-      <div><b>2027</b><span>Graduating</span></div>
-      <div><b>5</b><span>Projects</span></div>
+      <div><b data-count="2027">2027</b><span>Graduating</span></div>
+      <div><b data-count="4">4</b><span>Projects</span></div>
       <div><b>KIIT</b><span>University</span></div>
       <div><b>ML + HW</b><span>Where I work</span></div>
     </div>
@@ -145,16 +154,6 @@
         <div><span class="tag">Education</span><h3>B.Tech, Electronics and Computer Science</h3></div>
         <p>KIIT University. Third year, graduating May 2027. Coursework sits between circuits and computing, which is exactly where my projects live.</p>
         <span class="year" data-parallax>27</span><div class="flow"></div>
-      </article>
-      <article class="panel">
-        <div><span class="tag">Club role</span><h3>Graphic Designer and Content Writer</h3></div>
-        <p>Lakshya School of Electronics club. Posters, visuals and written pieces that explain electronics to a wider campus audience.</p>
-        <span class="year" data-parallax>DSN</span><div class="flow"></div>
-      </article>
-      <article class="panel">
-        <div><span class="tag">Service</span><h3>NSS Volunteering</h3></div>
-        <p>Active in the National Service Scheme, taking part in community work alongside academics.</p>
-        <span class="year" data-parallax>NSS</span><div class="flow"></div>
       </article>
       <article class="panel">
         <div><span class="tag">Certifications</span><h3>SAP BTP Developer · Complete Web Development</h3></div>
@@ -184,7 +183,7 @@
   </div>
   <div class="wrap wheel-meta">
     <button class="circle sm" id="wheel-prev" aria-label="Previous project">↑</button>
-    <div class="wheel-now"><span id="wheel-count">01 / 05</span><b id="wheel-name"></b><em id="wheel-status"></em></div>
+    <div class="wheel-now"><span id="wheel-count">01 / 04</span><b id="wheel-name"></b><em id="wheel-status"></em></div>
     <button class="circle sm" id="wheel-next" aria-label="Next project">↓</button>
   </div>
 </section>
@@ -204,11 +203,8 @@
 <section id="skills">
   <div class="wrap">
     <div class="sec-head"><h2 class="rv">Toolbox</h2></div>
-    <div class="skillgrid rv">
-      <div><h3>Machine learning</h3><p>Python · PyTorch · scikit-learn · 1D-CNN · Random Forest · SVM · Time-series classification</p></div>
-      <div><h3>Hardware</h3><p>Verilog · FPGA (Basys3) · AES-128 · Power side-channel analysis · INA219 · Arduino</p></div>
-      <div><h3>Web and data</h3><p>React · FastAPI · RAG with Chroma · Web development · SAP BTP</p></div>
-    </div>
+    <div class="tech-marquee" id="tech-marquee" aria-hidden="true"></div>
+    <div class="skillgrid" id="skillgrid"></div>
   </div>
 </section>
 
@@ -242,5 +238,7 @@
 <script src="js/experience-section.js"></script>
 <script src="js/works-wheel.js"></script>
 <script src="js/flex-carousel.js"></script>
+<script src="js/effects.js"></script>
+<script src="js/toolbox.js"></script>
 </body>
 </html>

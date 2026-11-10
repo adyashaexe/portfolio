@@ -1,6 +1,6 @@
 # Adyasha — Portfolio
 
-A monochrome editorial portfolio for an ML and electronics student: preloader, big metallic hero with a portrait slot, a scroll-expanding About, a horizontal journey timeline, a 3D drag-reel of projects, an accordion focus carousel, a project detail modal, a résumé download button and a contact section.
+A dark, colour-accented editorial portfolio for an ML and electronics student: a multilingual "hello" preloader, big metallic hero with a portrait slot, a scroll-expanding About, a horizontal journey timeline, a 3D drag-reel of projects, an accordion focus carousel, a project detail modal, a résumé download button and a contact section.
 
 Plain HTML, CSS and JavaScript. No build step, no frameworks, no dependencies.
 
@@ -39,14 +39,16 @@ You can also use the **Live Server** extension in VS Code: right-click `index.ht
 | Email, GitHub, LinkedIn, tagline | `js/config.js` |
 | **Your photo** | Save a portrait as `assets/photo.png`. A transparent PNG cut-out looks best. Until then a placeholder silhouette is shown. |
 | **Your résumé** | Save your PDF as `assets/Adyasha_Resume.pdf` (or change the path in `js/config.js`). All the "Résumé ↓" buttons use it. |
-| Projects (reel + popups) | `js/projects-data.js` → `PROJECTS` |
+| Projects (reel + popups) | `js/projects-data.js` → `PROJECTS` (each has an `accent` colour pair) |
 | Focus cards | `js/projects-data.js` → `FOCUS` |
 | Journey / timeline panels | the `<article class="panel">` blocks in `index.html` |
-| Toolbox skills | the `skillgrid` block in `index.html` |
+| Toolbox (animated chips + marquee) | `js/projects-data.js` → `TOOLBOX` |
+| Hello languages in the loader | the `GREET` list in `js/main.js` |
 | Colors and fonts | the `:root` variables at the top of `css/styles.css` |
 
 Tips:
 - The hero photo is shown in black and white to match the theme. To keep it in color, delete `filter:grayscale(1) contrast(1.05);` from `.hero-photo img` in `css/styles.css`.
+- The Angesnet entry in `js/projects-data.js` is a placeholder: fill in its blurb, status, stack and repo link.
 - Search the project for `TODO` to find placeholders (email, LinkedIn, repo links for projects that don't have a repo yet).
 - Project artwork is generated. Re-create or tweak it with `python3 scripts/generate_art.py`, or drop in your own screenshots and point `image:` at them.
 

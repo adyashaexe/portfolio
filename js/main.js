@@ -15,6 +15,18 @@
   window.onScrollRaf = function (fn) {
     scrollFns.push(fn); fn();
   };
+  /* Eases a scroll-driven value so sections glide instead of snapping. */
+  window.smoothScroll = function (getTarget, apply) {
+    var cur = getTarget(), tgt = cur, run = false;
+    function loop() {
+      cur += (tgt - cur) * 0.12;
+      if (Math.abs(tgt - cur) < 0.0004) { cur = tgt; run = false; }
+      apply(cur);
+      if (run) requestAnimationFrame(loop);
+    }
+    window.onScrollRaf(function () { tgt = getTarget(); if (!run) { run = true; requestAnimationFrame(loop); } });
+    apply(cur);
+  };
   function runScroll() { ticking = false; scrollFns.forEach(function (f) { f(); }); }
   function queue() { if (!ticking) { ticking = true; requestAnimationFrame(runScroll); } }
   window.addEventListener("scroll", queue, { passive: true });
@@ -72,31 +84,53 @@
     else done();
   });
 
-  /* ---------- Preloader (orbital wavy dots) ---------- */
+  /* ---------- Preloader: "hello" in many languages ---------- */
   (function () {
-    var c = $("#orbit"), loader = $("#loader");
-    if (!c || !loader) return;
-    var x = c.getContext("2d"), S = 440, R = 150, N = 28, t0 = performance.now(), dead = false;
-    function frame(now) {
-      var t = (now - t0) / 1000; x.clearRect(0, 0, S, S);
-      for (var i = 0; i < N; i++) {
-        var a = (i / N) * Math.PI * 2 + t * 1.2, w = Math.sin(a * 3 + t * 3) * 14;
-        var px = S / 2 + Math.cos(a) * (R + w), py = S / 2 + Math.sin(a) * (R + w);
-        x.beginPath(); x.arc(px, py, 2 + 1.6 * Math.pow(Math.sin(a * 2 + t * 2), 2), 0, 7);
-        x.fillStyle = "rgba(242,242,240," + (0.35 + 0.65 * ((i / N + t * 0.3) % 1)) + ")"; x.fill();
+    var loader = $("#loader"), wordEl = $("#hello-word"), langEl = $("#hello-lang"), bar = $("#ld-bar");
+    if (!loader || !wordEl) return;
+    var GREET = [
+      ["Hello", "English"], ["ନମସ୍କାର", "Odia"], ["नमस्ते", "Hindi"], ["Hola", "Spanish"],
+      ["Bonjour", "French"], ["こんにちは", "Japanese"], ["안녕하세요", "Korean"], ["Ciao", "Italian"],
+      ["你好", "Chinese"], ["Привет", "Russian"], ["Hello", "English"]
+    ];
+    var COLORS = [["#a78bfa", "#6366f1"], ["#22d3ee", "#3b82f6"], ["#f472b6", "#fb7185"], ["#fbbf24", "#f97316"]];
+    var EASE = "cubic-bezier(.16,1,.3,1)";
+    var i = 0, seqDone = false, loaded = document.readyState === "complete", hidden = false, timer;
+
+    function show(n) {
+      var g = GREET[n], c = COLORS[n % COLORS.length], last = n === GREET.length - 1;
+      wordEl.textContent = g[0]; langEl.textContent = g[1];
+      wordEl.style.backgroundImage = "linear-gradient(100deg," + c[0] + "," + c[1] + ")";
+      bar.style.width = ((n + 1) / GREET.length * 100) + "%";
+      if (wordEl.animate && !reduce) {
+        wordEl.animate([
+          { opacity: 0, transform: "translateY(42%) scale(.94)", filter: "blur(14px)" },
+          { opacity: 1, transform: "none", filter: "blur(0)" }
+        ], { duration: last ? 700 : 420, easing: EASE, fill: "both" });
+        langEl.animate([{ opacity: 0, transform: "translateY(10px)" }, { opacity: 1, transform: "none" }],
+          { duration: 420, easing: EASE, fill: "both" });
       }
-      if (!dead) requestAnimationFrame(frame);
     }
-    requestAnimationFrame(frame);
-    var hidden = false;
+    function next() {
+      i++;
+      if (i >= GREET.length) { seqDone = true; return check(); }
+      show(i);
+      timer = setTimeout(next, i === GREET.length - 1 ? 900 : 250);
+    }
+    function check() { if (seqDone && loaded) hide(); }
     function hide() {
-      if (hidden) return; hidden = true;
+      if (hidden) return; hidden = true; clearTimeout(timer);
       loader.classList.add("done");
-      setTimeout(function () { dead = true; revealHero(); }, 850);
-      revealHero();
+      document.body.classList.add("ready");
+      setTimeout(revealHero, reduce ? 0 : 450);
     }
-    window.addEventListener("load", function () { setTimeout(hide, reduce ? 0 : 1100); });
-    setTimeout(hide, 3500);
+
+    show(0);
+    if (reduce) { window.addEventListener("load", function () { setTimeout(hide, 300); }); setTimeout(hide, 1500); return; }
+    timer = setTimeout(next, 600);
+    if (!loaded) window.addEventListener("load", function () { loaded = true; check(); });
+    loader.addEventListener("click", hide);       // click to skip
+    setTimeout(hide, 7000);                       // failsafe
   })();
 
   /* ---------- Reveal on scroll (re-triggers on revisit) ---------- */
@@ -104,13 +138,19 @@
     es.forEach(function (e) { e.target.classList.toggle("in", e.isIntersecting); });
   }, { threshold: 0.15 });
   $$(".rv").forEach(function (el) { io.observe(el); });
+  window.observeReveal = function (el) { el.classList.add("rv"); io.observe(el); };
   function revealHero() { $$("#home .rv").forEach(function (el) { el.classList.add("in"); }); }
 
   /* ---------- Header state + scroll-spy ---------- */
+  var prog = $("#progress i");
   var header = $("#site-header"), links = $$("[data-nav]");
   var spyIds = ["home", "about", "experience", "projects", "focus", "skills", "contact"];
   window.onScrollRaf(function () {
     header.classList.toggle("scrolled", window.scrollY > 40);
+    if (prog) {
+      var max = document.documentElement.scrollHeight - window.innerHeight;
+      prog.style.transform = "scaleX(" + (max > 0 ? Math.min(1, window.scrollY / max) : 0) + ")";
+    }
     var cur = "home", vh = window.innerHeight;
     spyIds.forEach(function (id) {
       var el = document.getElementById(id);
@@ -148,9 +188,11 @@
       '<div class="grid"><div><h4>What it covers</h4><ul>' +
       p.done.map(function (d) { return "<li>" + esc(d) + "</li>"; }).join("") +
       '</ul></div><div><h4>Stack</h4><div class="chips">' +
-      p.stack.map(function (s) { return "<span>" + esc(s) + "</span>"; }).join("") +
+      p.stack.map(function (s, k) { return '<span style="--i:' + k + '">' + esc(s) + "</span>"; }).join("") +
       '</div></div></div><div class="links"><a class="btn solid" href="' + esc(p.link) +
       '" target="_blank" rel="noopener">View on GitHub ↗</a></div>';
+    var ac = p.accent || ["#a78bfa", "#22d3ee"];
+    card.style.setProperty("--a1", ac[0]); card.style.setProperty("--a2", ac[1]);
     modal.classList.add("open"); modal.setAttribute("aria-hidden", "false");
     document.body.style.overflow = "hidden";
     var close = $(".close", card); close.addEventListener("click", closeProject); close.focus();

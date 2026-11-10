@@ -26,6 +26,7 @@
     el.style.transform = "rotateX(" + (-i * step) + "deg) translateZ(" + R + "px)";
     el.innerHTML = '<img src="' + p.image + '" alt="" draggable="false">' +
       '<div class="cap"><b></b><span></span></div>';
+    if (p.accent) { el.style.setProperty("--a1", p.accent[0]); el.style.setProperty("--a2", p.accent[1]); }
     el.querySelector("b").textContent = p.name;
     el.querySelector("span").textContent = p.status;
     drum.appendChild(el); items.push(el);
@@ -49,6 +50,12 @@
       lastIdx = idx;
       countEl.textContent = "0" + (idx + 1) + " / 0" + N;
       nameEl.textContent = P[idx].name; statusEl.textContent = P[idx].kind;
+      var ac = P[idx].accent || ["#a78bfa", "#22d3ee"], box = nameEl.parentNode;
+      box.style.setProperty("--a1", ac[0]); box.style.setProperty("--a2", ac[1]);
+      if (nameEl.animate && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        nameEl.animate([{ opacity: 0, transform: "translateY(12px)", filter: "blur(6px)" }, { opacity: 1, transform: "none", filter: "blur(0)" }],
+          { duration: 500, easing: "cubic-bezier(.16,1,.3,1)" });
+      }
     }
   }
 

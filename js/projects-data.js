@@ -1,6 +1,7 @@
 /* ============================================================
    PROJECTS — edit, add or remove entries. The wheel and the modal
    are built from this list. `status` is shown as a label.
+   `accent` is a [from, to] colour pair used to tint the card.
    ============================================================ */
 window.PROJECTS = [
   {
@@ -8,6 +9,7 @@ window.PROJECTS = [
     kind: "Final-year project · Group ECSc_14",
     status: "Active",
     image: "assets/projects/trojan.svg",
+    accent: ["#22d3ee", "#3b82f6"],
     blurb:
       "Detecting hardware Trojans in FPGA-based AES-128 circuits using power side-channel analysis and machine learning.",
     done: [
@@ -25,6 +27,7 @@ window.PROJECTS = [
     kind: "Minor project · Medical ML",
     status: "In progress",
     image: "assets/projects/gastric.svg",
+    accent: ["#f472b6", "#fb7185"],
     blurb:
       "Gastric cancer detection that fuses histopathology images, genomic profiles and clinical data into a single model.",
     done: [
@@ -41,6 +44,7 @@ window.PROJECTS = [
     kind: "Scientific ML · Dashboard",
     status: "Building",
     image: "assets/projects/exoplanet.svg",
+    accent: ["#a78bfa", "#6366f1"],
     blurb:
       "Time-series analysis and classification to flag exoplanet candidates, with a dashboard on top. The backend comes first.",
     done: [
@@ -52,32 +56,15 @@ window.PROJECTS = [
     link: "https://github.com/adyashaexe" // TODO: point at the repo once it exists
   },
   {
-    name: "Hermes",
-    kind: "AI meeting assistant · RAG",
-    status: "Building",
-    image: "assets/projects/hermes.svg",
-    blurb:
-      "A bot that joins Google Meet, Zoom or Microsoft Teams and answers questions across notes, transcripts and docs. Formerly named Polaris.",
-    done: [
-      "Retrieves relevant context first, then generates precise answers",
-      "Targets Meet, Zoom and Teams from the start",
-      "Chroma as the vector store"
-    ],
-    stack: ["Python", "RAG", "Chroma"],
-    link: "https://github.com/adyashaexe" // TODO
-  },
-  {
-    name: "Ondeck",
-    kind: "Job aggregator · Full-stack",
-    status: "Planned",
-    image: "assets/projects/ondeck.svg",
-    blurb:
-      "Pulls job listings from multiple sites and apps, then sorts and filters them in one place.",
-    done: [
-      "React frontend with a FastAPI backend",
-      "Single Vercel deployment serving both frontend and API"
-    ],
-    stack: ["React", "FastAPI", "Vercel"],
+    // TODO: fill in the real description, status, stack and repo link for Angesnet.
+    name: "Angesnet",
+    kind: "Project",
+    status: "Coming soon",
+    image: "assets/projects/angesnet.svg",
+    accent: ["#fbbf24", "#f97316"],
+    blurb: "Details for this project are coming soon.",
+    done: ["Write-up in progress"],
+    stack: ["Details soon"],
     link: "https://github.com/adyashaexe" // TODO
   }
 ];
@@ -88,6 +75,7 @@ window.FOCUS = [
     key: "ml",
     title: "Machine learning",
     image: "assets/focus/ml.svg",
+    accent: ["#a78bfa", "#6366f1"],
     text: "Models for signals, images and time-series: 1D-CNNs, classical baselines, multimodal fusion. I check for leakage before I trust a number.",
     tags: ["PyTorch", "scikit-learn", "Time-series"]
   },
@@ -95,6 +83,7 @@ window.FOCUS = [
     key: "hardware",
     title: "Hardware & security",
     image: "assets/focus/hardware.svg",
+    accent: ["#22d3ee", "#3b82f6"],
     text: "FPGA design in Verilog, power measurement rigs and side-channel analysis for spotting tampered circuits.",
     tags: ["Verilog", "Basys3", "Arduino"]
   },
@@ -102,14 +91,18 @@ window.FOCUS = [
     key: "web",
     title: "Web & full-stack",
     image: "assets/focus/web.svg",
+    accent: ["#f472b6", "#fb7185"],
     text: "React and FastAPI apps, retrieval-based assistants and clean dashboards that make results easy to explore.",
     tags: ["React", "FastAPI", "RAG"]
-  },
-  {
-    key: "design",
-    title: "Design & writing",
-    image: "assets/focus/design.svg",
-    text: "Graphic design and content writing for the Lakshya School of Electronics club: making technical topics easy to look at and read.",
-    tags: ["Graphic design", "Content writing"]
   }
+];
+
+/* Toolbox: rendered (and animated) by js/toolbox.js */
+window.TOOLBOX = [
+  { title: "Machine learning", color: "#a78bfa",
+    items: ["Python", "PyTorch", "scikit-learn", "1D-CNN", "Random Forest", "SVM", "Time-series classification"] },
+  { title: "Hardware", color: "#22d3ee",
+    items: ["Verilog", "FPGA (Basys3)", "AES-128", "Power side-channel analysis", "INA219", "Arduino"] },
+  { title: "Web and data", color: "#f472b6",
+    items: ["React", "FastAPI", "RAG with Chroma", "Web development", "SAP BTP"] }
 ];

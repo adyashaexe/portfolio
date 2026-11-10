@@ -20,8 +20,10 @@
     c.querySelector(".vlabel").textContent = f.title;
     c.querySelector("h3").textContent = f.title;
     c.querySelector("p").textContent = f.text;
-    f.tags.forEach(function (t) {
-      var s = document.createElement("span"); s.textContent = t; c.querySelector(".chips").appendChild(s);
+    if (f.accent) { c.style.setProperty("--a1", f.accent[0]); c.style.setProperty("--a2", f.accent[1]); }
+    f.tags.forEach(function (t, k) {
+      var s = document.createElement("span"); s.textContent = t; s.style.setProperty("--i", k);
+      c.querySelector(".chips").appendChild(s);
     });
     c.addEventListener("click", function () { select(i); });
     if (canHover) c.addEventListener("mouseenter", function () {
